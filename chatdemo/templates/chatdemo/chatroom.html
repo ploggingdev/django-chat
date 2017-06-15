@@ -1,0 +1,75 @@
+{% extends "registration/base.html" %} 
+
+{% load static %}
+
+{% block title %}Django Chat{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    <br />
+    <br />
+
+    {% include "chatdemo/errors_and_messages.html" %}
+
+    <div class="row">
+
+            <div class="col-xs-3 col-sm-2  col-sm-offset-1 pre-scrollable">
+                <em><span class="text-success" id="loggedin-users-count">0</span> users online and <span class="text-success" id="lurkers-count">0</span> onlookers</em>
+
+                <ul class="list-group" id="user-list">
+                    <li class="list-group-item">user1</li>
+                </ul>
+
+            </div>
+
+            <div class="col-xs-9 col-sm-8 text-left pre-scrollable" id="all_messages">
+                <div class="hidden" id="last_message_id">{{ first_message_id }}</div>
+                    {% if first_message_id > 0 %}
+                        <div class="text-center"><button id="load_old_messages" class="btn btn-success">Load old messages</button></div>
+                    {% endif %}
+                <ul class="list-group" id="chat">
+                    
+                    {% for message in chat_messages %}
+                        <li class="list-group-item">
+                        <strong>{{ message.user }} : </strong>
+                        {{ message.message_html|safe }} 
+                        </li>
+                    {% empty %}
+                    <div id="no_messages">No messages here</div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        </br>
+
+        <div class="row">
+            <form id="chatform" autocomplete="off">
+                <div class="col-xs-10 col-sm-7 col-sm-offset-3">
+                    {% if user.is_authenticated %}
+                    <input id="message" type="text" class="form-control input-lg" placeholder="Type chat message here" required>
+                    {% else %}
+                    <input class="form-control  input-lg" id="disabledInput" type="text" placeholder="Please login to chat" disabled>
+                    {% endif %}
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <button id="go" type="submit" class="btn btn-primary input-lg">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    <br />
+    <br />
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+<script type="text/javascript" src='{% static "chatdemo/reconnecting-websocket.min.js" %}'></script>
+<script type="text/javascript" src='{% static "chatdemo/realtime.js" %}'></script>
+
+{% endblock %}

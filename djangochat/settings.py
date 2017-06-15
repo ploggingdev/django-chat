@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,12 +32,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chatdemo.apps.ChatdemoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'channels',
+    'channels_presence',
+    'celery',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -126,12 +133,23 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'postmarker.django.EmailBackend'
+
+POSTMARK = {
+    'TOKEN': os.environ['djangochat_postmark_token'],
+    'TEST_MODE': False,
+}
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "CONFIG": {
             "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
-        "ROUTING": "topics.routing.channel_routing",
+        "ROUTING": "chatdemo.routing.channel_routing",
     },
 }

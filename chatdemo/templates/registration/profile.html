@@ -1,0 +1,42 @@
+{% extends "registration/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    {% include "chatdemo/errors_and_messages.html" %}
+
+    <div class="row text-left">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <input type="text" value="{{ request.user.username }}" id="id_username" class="form-control" disabled/> 
+            </div>
+            <form method="post" class="form" action="{% url 'chatdemo:profile' %}">
+            {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">Email address</label>
+                        {{ form.email |attr:"placeholder:Email" |add_class:"form-control" }} 
+                    </div>
+                <button class="btn btn-primary" type="submit">Update</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+
+{% if user.is_authenticated %}
+<br />
+<a class="btn btn-default" href="{% url 'chatdemo:password_change' %}">Change password</a>
+<br /><br />
+<a class="btn btn-default" href="{% url 'chatdemo:password_reset' %}">Reset password</a>
+<br /><br />
+{% endif %}
+
+</div>
+
+{% endblock %}

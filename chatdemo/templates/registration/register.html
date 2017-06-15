@@ -1,0 +1,45 @@
+{% extends "registration/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    {% include "chatdemo/errors_and_messages.html" %}
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="form-signin" method="post" action="{% url 'chatdemo:register' %}">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Signup</h2>
+
+            <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label> 
+            {{ form.username |attr:"placeholder:Username" |add_class:"form-control" }}
+
+            <label for="{{ form.email.id_for_label }}" class="sr-only">Email</label> 
+            {{ form.email |attr:"placeholder:Email" |add_class:"form-control" }}
+
+            <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label> 
+            {{ form.password | attr:"placeholder:Password" |add_class:"form-control" }}
+            
+            <button class="btn btn-primary btn-block" type="submit">Register</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <p>Already have an account? <a href="{% url 'chatdemo:login' %}">Login</a>
+        </p>
+    </div>
+    
+    <div class="row">
+        <p>Forgot your password? <a href="{% url 'chatdemo:password_reset' %}">Reset password</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
