@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %} 
+
+{% block title %}500 Internal Server Error{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    {% include "topics_common/errors_and_messages.html" %}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-left">
+            <br />
+            <ul class="list-group">
+                <li class="list-group-item">
+            <div class="text-center"><h3>Internal Server Error</h3></div>
+            <p>
+            Oops, something unexpected happened. Please report this incident to the site owner.
+            </p>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+
+</div>
+
+{% endblock %}

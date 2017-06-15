@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %} 
+
+{% block title %}404 Page Not Found{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    
+    {% include "topics_common/errors_and_messages.html" %}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-left">
+            <br />
+            <ul class="list-group">
+                <li class="list-group-item">
+            <div class="text-center"><h3>404 Page Not Found</h3></div>
+            <p>
+            The page you are looking for does not exist.
+            </p>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+
+</div>
+
+{% endblock %}
