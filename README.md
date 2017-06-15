@@ -2,6 +2,10 @@
 
 This is a simple chat room built using Django Channels.
 
+**Demo [here](https://chat.ploggingdev.com/)**
+
+Note : This demo site will removed after a few days.
+
 Setup instructions on Ubuntu 16.04:
 
 Follow this [guide](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04) for the initial server setup.
@@ -58,14 +62,6 @@ pip install -r requirements.txt
 pip install --upgrade pip
 ```
 
-Edit `djangochat/settings.py` :
-
-```
-DEBUG = False
-
-ALLOWED_HOSTS = ['chat.ploggingdev.com','SERVER_IP']
-```
-
 Add environment variables :
 
 ```
@@ -96,12 +92,10 @@ source ~/.bashrc
 source venv/djangochat/bin/activate
 ```
 
-Perform database migration and collect static files : 
+Perform database migration : 
 
 ```
 python manage.py migrate
-
-python manage.py collectstatic
 ```
 
 Install redis by following this [guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04).
