@@ -2,10 +2,6 @@
 
 This is a simple chat room built using Django Channels.
 
-**Demo [here](https://chat.ploggingdev.com/)**
-
-Note : This demo site will removed after a few days.
-
 Setup instructions on Ubuntu 16.04:
 
 Follow this [guide](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04) for the initial server setup.
