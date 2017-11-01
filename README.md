@@ -102,10 +102,6 @@ Create Django superuser :
 python manage.py createsuperuser
 ```
 
-Configure django-channels-presence pruning of websocket connections (this is necessary to remove inactive websocket connections) :
-
-Go to the `/admin/django_celery_beat/periodictask/add/` panel and add a custom task `channels_presence.tasks.prune_presence` with an interval of your choice. I used 60 seconds for testing purposes.
-
 Start the development server :
 
 ```
