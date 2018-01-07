@@ -23,7 +23,6 @@ incremental==17.5.0
 kombu==4.0.2
 Markdown==2.6.8
 msgpack-python==0.4.8
-pkg-resources==0.0.0
 postmarker==0.11.2
 psycopg2==2.7.1
 pytz==2017.2
