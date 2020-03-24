@@ -5,7 +5,7 @@ attrs==17.2.0
 autobahn==17.6.1
 Automat==0.6.0
 billiard==3.5.0.2
-bleach==2.0.0
+bleach==3.1.2
 celery==4.0.2
 certifi==2017.4.17
 channels==1.1.3
