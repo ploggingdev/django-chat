@@ -2,7 +2,7 @@ amqp==2.1.4
 asgi-redis==1.4.0
 asgiref==1.1.2
 attrs==17.2.0
-autobahn==17.6.1
+autobahn==20.12.3
 Automat==0.6.0
 billiard==3.5.0.2
 bleach==2.0.0
